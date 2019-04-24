@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
-import SocketServer
+import socketserver
 
-class MyTCPHandler(SocketServer.BaseRequestHandler):
+class MyTCPHandler(socketserver.BaseRequestHandler):
     """
     It is instantiated once per connection to the server, and must
     override the handle() method to implement communication to the
@@ -21,7 +21,7 @@ if __name__ == "__main__":
     HOST, PORT = "localhost", 9999
 
     # Create the server, binding to localhost on port 9999
-    server = SocketServer.TCPServer((HOST, PORT), MyTCPHandler)
+    server = socketserver.TCPServer((HOST, PORT), MyTCPHandler)
 
     # Activate the server; this will keep running until you
     # interrupt the program with Ctrl-C
