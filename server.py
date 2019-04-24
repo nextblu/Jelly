@@ -3,7 +3,7 @@ import config.configured_logger
 
 logger = config.configured_logger.logger
 
-class MyTCPHandler(socketserver.BaseRequestHandler):
+class TCPHandler(socketserver.BaseRequestHandler):
     """
     It is instantiated once per connection to the server, and must
     override the handle() method to implement communication to the
@@ -18,12 +18,15 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
         # just send back the same data, but upper-cased
         self.request.sendall(self.data.upper())
 
+    def intentBroker(self):
+        # TODO: Read intent file and define a well-structured api endpoint
+        pass
 
 if __name__ == "__main__":
     HOST, PORT = "localhost", 9999
 
     # Create the server, binding to localhost on port 9999
-    server = socketserver.TCPServer((HOST, PORT), MyTCPHandler)
+    server = socketserver.TCPServer((HOST, PORT), TCPHandler)
 
     # Activate the server; this will keep running until you
     # interrupt the program with Ctrl-C
