@@ -1,4 +1,8 @@
 import socket
+import config.configured_logger
+
+logger = config.configured_logger.logger
+
 
 hostname, port = 'localhost', 9999
 target = hostname
@@ -16,4 +20,4 @@ client.send('hi'.encode('utf-8'))
 # receive the response data (4096 is recommended buffer size)
 response = client.recv(4096)
 
-print (response)
+logger.debug (response)
