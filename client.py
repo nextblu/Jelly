@@ -1,4 +1,5 @@
 import socket
+from socket import socket, AF_INET, SOCK_DGRAM
 import config.configured_logger
 
 # TODO:
@@ -17,9 +18,16 @@ class SlaveHandler(object):
     def __init__(self, arg):
         super(SlaveHandler, self).__init__()
         self.arg = arg
+        MasterDiscovery()
 
-    def MasterFinder(self):
-        pass
+    def MasterDiscovery(self):
+        s = socket(AF_INET, SOCK_DGRAM) #create UDP socket
+        s.bind(('', PORT))
+
+        while 1:
+            data, addr = s.recvfrom(1024) #wait for a packet
+            if data.startswith(MAGIC):
+                print "got service announcement from", data[len(MAGIC):]
 
     def intentBroker(self):
         pass
