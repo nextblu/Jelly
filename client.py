@@ -18,6 +18,12 @@ class SlaveHandler(object):
         super(SlaveHandler, self).__init__()
         self.arg = arg
 
+    def MasterFinder(self):
+        pass
+
+    def intentBroker(self):
+        pass
+
 
 if __name__ == "__main__":
     HOST, PORT = "localhost", 9999
