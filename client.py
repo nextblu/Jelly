@@ -1,6 +1,6 @@
 import socket
 from socket import socket, AF_INET, SOCK_DGRAM
-import config.configured_logger
+from .config import configured_logger
 
 # TODO:
 """
@@ -10,31 +10,36 @@ import config.configured_logger
 + Implement an intent broker
 + Implement a master-watchdogs
 """
-logger = config.configured_logger.logger
+logger = configured_logger.logger
 
 
 class SlaveHandler(object):
     """docstring for SlaveHandler."""
-    def __init__(self, arg):
+    def __init__(self, arg, port, magic):
         super(SlaveHandler, self).__init__()
         self.arg = arg
-        MasterDiscovery()
+        self.port = port
+        self.magic = magic
+        # The following line is commented due to an unresolved reference error. What is that method meant to do?
+        # master_discovery()
 
-    def MasterDiscovery(self):
-        s = socket(AF_INET, SOCK_DGRAM) #create UDP socket
-        s.bind(('', PORT))
+    def master_discovery(self):
+        # create UDP socket
+        s = socket(AF_INET, SOCK_DGRAM)
+        s.bind(('', self.port))
 
         while 1:
-            data, addr = s.recvfrom(1024) #wait for a packet
-            if data.startswith(MAGIC):
-                print "got service announcement from", data[len(MAGIC):]
+            # wait for a packet
+            data, address = s.recvfrom(1024)
+            if data.startswith(self.magic):
+                logger.info("got service announcement from", data[len(self.magic):])
 
-    def intentBroker(self):
+    def intent_broker(self):
         pass
 
 
 if __name__ == "__main__":
-    HOST, PORT = "localhost", 9999
+    HOST, PORT, MAGIC = "localhost", 9999, "JellySERVER"
 
     # create an ipv4 (AF_INET) socket object using the tcp protocol (SOCK_STREAM)
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -47,5 +52,4 @@ if __name__ == "__main__":
 
     # receive the response data (4096 is recommended buffer size for incoming commands)
     response = client.recv(4096)
-
-    logger.debug (response)
+    logger.debug(response)
