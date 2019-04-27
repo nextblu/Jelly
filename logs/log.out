@@ -1,1 +1,15 @@
-2019-04-24 23:15:49,504 - logging-test.py - DEBUG - TEST DEBUG
+2019-04-27 15:18:55,317 - client.py - DEBUG - b'DUMMY DATA'
+2019-04-27 15:32:12,208 - server.py - DEBUG - 127.0.0.1 wrote:
+2019-04-27 15:32:12,210 - server.py - DEBUG - b'ciaone'
+2019-04-27 15:32:12,212 - client.py - DEBUG - b'CIAONE'
+2019-04-27 15:32:35,240 - server.py - DEBUG - 127.0.0.1 wrote:
+2019-04-27 15:32:35,241 - server.py - DEBUG - b'dummy data'
+2019-04-27 15:32:35,241 - client.py - DEBUG - b'DUMMY DATA'
+2019-04-27 15:41:34,054 - server.py - DEBUG - 127.0.0.1 wrote: b'dummy data'
+2019-04-27 15:41:34,055 - client.py - DEBUG - b'DUMMY DATA'
+2019-04-27 15:43:52,239 - server.py - DEBUG - 127.0.0.1 wrote: b'dummy data'
+2019-04-27 15:43:52,240 - client.py - DEBUG - b'DUMMY DATA'
+2019-04-27 16:02:19,958 - server.py - INFO - Starting server at address ('localhost', 9999)
+2019-04-27 16:02:19,969 - server.py - INFO - Server started
+2019-04-27 16:02:30,886 - server.py - DEBUG - 127.0.0.1 wrote: b'dummy data'
+2019-04-27 16:02:30,887 - client.py - DEBUG - b'DUMMY DATA'

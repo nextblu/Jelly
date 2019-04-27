@@ -1,7 +1,7 @@
 import socketserver
 from time import sleep
 from socket import socket, AF_INET, SOCK_DGRAM, SOL_SOCKET, SO_BROADCAST, gethostbyname, gethostname
-from .config import configured_logger
+from config import configured_logger
 
 logger = configured_logger.logger
 
@@ -36,8 +36,7 @@ class TCPHandler(socketserver.BaseRequestHandler):
     def handle(self):
         # self.request is the TCP socket connected to the client
         self.data = self.request.recv(1024).strip()
-        logger.debug("{} wrote:".format(self.client_address[0]))
-        logger.debug(self.data)
+        logger.debug("{} wrote: {}".format(self.client_address[0], self.data))
         # just send back the same data, but upper-cased
         self.request.sendall(self.data.upper())
 
@@ -46,11 +45,30 @@ class TCPHandler(socketserver.BaseRequestHandler):
         pass
 
 
+class VerboseTCPServer(socketserver.TCPServer):
+    def __init__(self, address, handler):
+        self.address = address
+        self.handler = handler
+        socketserver.TCPServer.__init__(self, address, handler)
+
+    def server_activate(self):
+        logger.info("Starting server at address {}".format(self.address))
+        socketserver.TCPServer.server_activate(self)
+        logger.info("Server started")
+
+    def server_close(self):
+        logger.info("Shutting down server at address {}".format(self.address))
+        socketserver.TCPServer.server_close(self)
+        logger.info("Server stopped")
+
 if __name__ == "__main__":
+
     HOST, PORT, MAGIC = "localhost", 9999, "JellySERVER"
 
+    # Allowing to reuse same address
+    socketserver.TCPServer.allow_reuse_address = True
     # Create the server, binding to localhost on port 9999
-    server = socketserver.TCPServer((HOST, PORT), TCPHandler)
+    server = VerboseTCPServer((HOST, PORT), TCPHandler)
 
     # Activate the server; this will keep running until you
     # interrupt the program with Ctrl-C

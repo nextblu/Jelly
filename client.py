@@ -1,6 +1,5 @@
-import socket
-from socket import socket, AF_INET, SOCK_DGRAM
-from .config import configured_logger
+from socket import socket, AF_INET, SOCK_DGRAM, SOCK_STREAM
+from config import configured_logger
 
 # TODO:
 """
@@ -42,7 +41,7 @@ if __name__ == "__main__":
     HOST, PORT, MAGIC = "localhost", 9999, "JellySERVER"
 
     # create an ipv4 (AF_INET) socket object using the tcp protocol (SOCK_STREAM)
-    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client = socket(AF_INET, SOCK_STREAM)
 
     # connect the client
     client.connect((HOST, PORT))
