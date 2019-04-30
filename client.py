@@ -1,15 +1,38 @@
 from socket import socket, AF_INET, SOCK_DGRAM, SOCK_STREAM
+import ssl
+
 from config import configured_logger
 
-# TODO:
-"""
-+ Implement headers
-+ Implement an ID system
-+ Implement a send_forever directive
-+ Implement an intent broker
-+ Implement a master-watchdogs
-"""
 logger = configured_logger.logger
+
+
+class SecureTCPClient:
+    def __init__(self, server_address, cafile):
+        # create an ipv4 (AF_INET) socket object using the tcp protocol (SOCK_STREAM)
+        self._client = socket(AF_INET, SOCK_STREAM)
+        context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile=cafile)
+        context.check_hostname = False
+        self._client = context.wrap_socket(self._client)
+
+        # connect the client
+        self._client.connect(server_address)
+
+    def client_close(self):
+        self._client.close()
+
+    def exchange(self, data):
+        # send some data
+        self._client.send(data)
+
+        # receive the response data (4096 is recommended buffer size for incoming commands)
+        response = self._client.recv(4096)
+        return response
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        self.client_close()
 
 
 class SlaveHandler(object):

@@ -1,15 +1,24 @@
-2019-04-27 15:18:55,317 - client.py - DEBUG - b'DUMMY DATA'
-2019-04-27 15:32:12,208 - server.py - DEBUG - 127.0.0.1 wrote:
-2019-04-27 15:32:12,210 - server.py - DEBUG - b'ciaone'
-2019-04-27 15:32:12,212 - client.py - DEBUG - b'CIAONE'
-2019-04-27 15:32:35,240 - server.py - DEBUG - 127.0.0.1 wrote:
-2019-04-27 15:32:35,241 - server.py - DEBUG - b'dummy data'
-2019-04-27 15:32:35,241 - client.py - DEBUG - b'DUMMY DATA'
-2019-04-27 15:41:34,054 - server.py - DEBUG - 127.0.0.1 wrote: b'dummy data'
-2019-04-27 15:41:34,055 - client.py - DEBUG - b'DUMMY DATA'
-2019-04-27 15:43:52,239 - server.py - DEBUG - 127.0.0.1 wrote: b'dummy data'
-2019-04-27 15:43:52,240 - client.py - DEBUG - b'DUMMY DATA'
-2019-04-27 16:02:19,958 - server.py - INFO - Starting server at address ('localhost', 9999)
-2019-04-27 16:02:19,969 - server.py - INFO - Server started
-2019-04-27 16:02:30,886 - server.py - DEBUG - 127.0.0.1 wrote: b'dummy data'
-2019-04-27 16:02:30,887 - client.py - DEBUG - b'DUMMY DATA'
+2019-04-30 17:16:51,607 - server.py - INFO - Starting server at address ('127.0.0.1', 9999)
+2019-04-30 17:16:51,608 - server.py - INFO - Server started
+2019-04-30 17:16:51,609 - tests.py - INFO - wait server...
+2019-04-30 17:16:51,718 - tests.py - DEBUG - 127.0.0.1 wrote: b'BOOM!!!'
+2019-04-30 17:16:51,718 - server.py - ERROR - ----------------------------------------
+2019-04-30 17:16:51,718 - server.py - ERROR - Exception happened during processing of request from ('127.0.0.1', 45544)
+Traceback (most recent call last):
+  File "/home/depaolim/.pyenv/versions/3.6.8/lib/python3.6/socketserver.py", line 320, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/home/depaolim/.pyenv/versions/3.6.8/lib/python3.6/socketserver.py", line 351, in process_request
+    self.finish_request(request, client_address)
+  File "/home/depaolim/.pyenv/versions/3.6.8/lib/python3.6/socketserver.py", line 364, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/home/depaolim/.pyenv/versions/3.6.8/lib/python3.6/socketserver.py", line 724, in __init__
+    self.handle()
+  File "/home/depaolim/Projects/Jelly/test/tests.py", line 32, in handle
+    raise MyException("BOOM!!!")
+test.tests.MyException: BOOM!!!
+2019-04-30 17:16:51,719 - server.py - ERROR - ----------------------------------------
+2019-04-30 17:16:51,719 - tests.py - INFO - shutdown...
+2019-04-30 17:16:52,220 - tests.py - INFO - close...
+2019-04-30 17:16:52,220 - server.py - INFO - Shutting down server at address ('127.0.0.1', 9999)
+2019-04-30 17:16:52,220 - server.py - INFO - Server stopped
+2019-04-30 17:16:52,221 - tests.py - INFO - join...
