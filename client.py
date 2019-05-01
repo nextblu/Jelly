@@ -1,10 +1,29 @@
-from socket import socket, AF_INET, SOCK_DGRAM, SOCK_STREAM
+from socket import socket, AF_INET, SOCK_DGRAM, SOCK_STREAM, SO_BROADCAST, SOL_SOCKET
 import ssl
-
+import time
+from pickle import loads, dumps
+import threading
 from config import configured_logger
 
 logger = configured_logger.logger
 
+
+def master_discovery():
+    client = socket(AF_INET, SOCK_DGRAM) # UDP
+    client.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
+    client.bind(("", 37020))
+    while True:
+        data, addr = client.recvfrom(1024)
+        if data:
+            #data = data.decode()
+            data = loads(data)
+            # extracting server name
+            ServerName = data["ServerName"]
+            ServerVersion = data["ServerVersion"]
+            ServerPort = data["ServerPort"]
+            logger.info("Got service announcement from '{0}' version '{1}' on port '{2}'".format(ServerName, ServerVersion, ServerPort))
+            #extracting the server's port number
+            return ServerPort
 
 class SecureTCPClient:
     def __init__(self, server_address, cafile):
@@ -45,22 +64,12 @@ class SlaveHandler(object):
         # The following line is commented due to an unresolved reference error. What is that method meant to do?
         # master_discovery()
 
-    def master_discovery(self):
-        # create UDP socket
-        s = socket(AF_INET, SOCK_DGRAM)
-        s.bind(('', self.port))
 
-        while 1:
-            # wait for a packet
-            data, address = s.recvfrom(1024)
-            if data.startswith(self.magic):
-                logger.info("got service announcement from", data[len(self.magic):])
-
-    def intent_broker(self):
-        pass
 
 
 if __name__ == "__main__":
+    PORT = master_discovery()
+
     HOST, PORT, MAGIC = "localhost", 9999, "JellySERVER"
 
     # create an ipv4 (AF_INET) socket object using the tcp protocol (SOCK_STREAM)
@@ -69,8 +78,16 @@ if __name__ == "__main__":
     # connect the client
     client.connect((HOST, PORT))
 
-    # send some data
-    client.send('dummy data'.encode('utf-8'))
+
+    message = "dummy data"
+    # Creating the dict
+    data = {
+      "ClientID": "44ad4456a4d65s",
+      "ClientVersion": "0.001",
+      "ClientMessage": message
+    }
+
+    client.send(dumps(data))
 
     # receive the response data (4096 is recommended buffer size for incoming commands)
     response = client.recv(4096)
