@@ -28,6 +28,7 @@ def master_discovery():
                 #extracting the server's port number
                 return ServerPort
     except Exception as e:
+        logger.debug("Got an error while searching for the server: '{0}'".format(e))
         master_discovery()
     
 
@@ -93,8 +94,7 @@ if __name__ == "__main__":
       "ClientMessage": message
     }
 
-    while True:
-        client.send(dumps(data))
+    client.send(dumps(data))
 
     # receive the response data (4096 is recommended buffer size for incoming commands)
     response = client.recv(4096)
