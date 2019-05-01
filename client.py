@@ -1,6 +1,6 @@
 from socket import socket, AF_INET, SOCK_DGRAM, SOCK_STREAM, SO_BROADCAST, SOL_SOCKET
 import ssl
-import time
+from time import sleep
 from pickle import loads, dumps
 import threading
 from config import configured_logger
@@ -9,21 +9,27 @@ logger = configured_logger.logger
 
 
 def master_discovery():
-    client = socket(AF_INET, SOCK_DGRAM) # UDP
-    client.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
-    client.bind(("", 37020))
-    while True:
-        data, addr = client.recvfrom(1024)
-        if data:
-            #data = data.decode()
-            data = loads(data)
-            # extracting server name
-            ServerName = data["ServerName"]
-            ServerVersion = data["ServerVersion"]
-            ServerPort = data["ServerPort"]
-            logger.info("Got service announcement from '{0}' version '{1}' on port '{2}'".format(ServerName, ServerVersion, ServerPort))
-            #extracting the server's port number
-            return ServerPort
+    # BUG -> OSERROR 98
+    # WORKAROUND: I try again until the port is free 
+    try:
+        client = socket(AF_INET, SOCK_DGRAM) # UDP
+        client.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
+        client.bind(("", 37020))
+        while True:
+            data, addr = client.recvfrom(1024)
+            if data:
+                #data = data.decode()
+                data = loads(data)
+                # extracting server name
+                ServerName = data["ServerName"]
+                ServerVersion = data["ServerVersion"]
+                ServerPort = data["ServerPort"]
+                logger.info("Got service announcement from '{0}' version '{1}' on port '{2}'".format(ServerName, ServerVersion, ServerPort))
+                #extracting the server's port number
+                return ServerPort
+    except Exception as e:
+        master_discovery()
+    
 
 class SecureTCPClient:
     def __init__(self, server_address, cafile):
@@ -87,7 +93,8 @@ if __name__ == "__main__":
       "ClientMessage": message
     }
 
-    client.send(dumps(data))
+    while True:
+        client.send(dumps(data))
 
     # receive the response data (4096 is recommended buffer size for incoming commands)
     response = client.recv(4096)
