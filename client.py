@@ -82,8 +82,8 @@ if __name__ == "__main__":
     message = "dummy data"
     # Creating the dict
     data = {
-      "ClientID": "44ad4456a4d65s",
-      "ClientVersion": "0.001",
+      "ClientID": "44ad4456a4d65s",     # Yo, we should add client ID here
+      "ClientVersion": "0.001",         # :)
       "ClientMessage": message
     }
 
