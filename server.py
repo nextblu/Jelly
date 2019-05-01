@@ -1,7 +1,10 @@
 import socketserver
 import ssl
+import json
+import threading
+import time
 from time import sleep
-from socket import socket, AF_INET, SOCK_DGRAM, SOL_SOCKET, SO_BROADCAST, gethostbyname, gethostname
+from socket import socket, AF_INET, SOCK_DGRAM, SOL_SOCKET, SO_BROADCAST, gethostbyname, gethostname, IPPROTO_UDP
 from config import configured_logger
 
 logger = configured_logger.logger
@@ -37,21 +40,17 @@ class SecureTCPServer(socketserver.TCPServer):
 
 
 def service_announcement(port, magic):
-    # create UDP socket
-    s = socket(AF_INET, SOCK_DGRAM)
-    s.bind(('', 0))
-
-    # this is a broadcast socket
-    s.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
-
-    # get our IP. Be careful if you have multiple network interfaces or IPs
-    my_ip = gethostbyname(gethostname())
-
-    while 1:
-        announcement_data = magic+my_ip
-        s.sendto(announcement_data, ('<broadcast>', port))
-        logger.debug("Sent service announcement")
-        sleep(5)
+    server = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)
+    server.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
+    # Set a timeout so the socket does not block
+    # indefinitely when trying to receive data.
+    server.settimeout(0.2)
+    server.bind(("", 44444))
+    message = str.encode(magic+","+str(port))
+    logger.info("broadcast transmission started!")
+    while True:
+        server.sendto(message, ('<broadcast>', 37020))
+        time.sleep(1)
 
 
 class TCPHandler(socketserver.BaseRequestHandler):
@@ -95,6 +94,11 @@ class VerboseTCPServer(socketserver.TCPServer):
 if __name__ == "__main__":
 
     HOST, PORT, MAGIC = "localhost", 9999, "JellySERVER"
+
+    #Starting service_announcement deamon
+    service_announcement_thread = threading.Thread(target=service_announcement, args=(PORT, MAGIC))
+    service_announcement_thread.daemon = True
+    service_announcement_thread.start()
 
     # Allowing to reuse same address
     socketserver.TCPServer.allow_reuse_address = True
