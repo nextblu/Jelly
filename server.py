@@ -3,6 +3,7 @@ import ssl
 import json
 import threading
 import time
+from pickle import loads, dumps
 from time import sleep
 from socket import socket, AF_INET, SOCK_DGRAM, SOL_SOCKET, SO_BROADCAST, gethostbyname, gethostname, IPPROTO_UDP
 from config import configured_logger
@@ -46,11 +47,20 @@ def service_announcement(port, magic):
     # indefinitely when trying to receive data.
     server.settimeout(0.2)
     server.bind(("", 44444))
-    message = str.encode(magic+","+str(port))
-    logger.info("broadcast transmission started!")
+
+
+    serverdict = {
+      "ServerName": "JellySERVER",
+      "ServerVersion": "0.001",
+      "ServerPort": port
+    }
+    message = dumps(serverdict)
+    #message = str.encode(message)
+
+    logger.info("Broadcast transmission started!")
     while True:
         server.sendto(message, ('<broadcast>', 37020))
-        time.sleep(1)
+        sleep(0.2)
 
 
 class TCPHandler(socketserver.BaseRequestHandler):
@@ -65,11 +75,12 @@ class TCPHandler(socketserver.BaseRequestHandler):
     def handle(self):
         # self.request is the TCP socket connected to the client
         self.data = self.request.recv(1024).strip()
-        logger.debug("{} wrote: {}".format(self.client_address[0], self.data))
-        # just send back the same data, but upper-cased
-        self.request.sendall(self.data.upper())
+        self.data = loads(self.data) # Pickle utility
+        logger.debug("{} wrote: {}".format(self.data["ClientID"], self.data["ClientMessage"]))
+        # just sending back the ACK 
+        self.request.sendall("k".encode())
 
-    def intent_broker(self):
+    def intent_broker(self, query):
         # TODO: Read intent file and define a well-structured api endpoint
         pass
 
