@@ -28,7 +28,7 @@ def master_discovery():
                 #extracting the server's port number
                 return ServerPort
     except Exception as e:
-        logger.debug("Got an error while searching for the server: '{0}'".format(e))
+        logger.error("Got an error while searching for the server: '{0}'".format(e))
         master_discovery()
     
 
