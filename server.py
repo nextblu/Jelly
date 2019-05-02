@@ -76,7 +76,7 @@ class ThreadingTCPServer(socketserver.ThreadingMixIn, socketserver.StreamRequest
         # self.request is the TCP socket connected to the client
         self.data = self.request.recv(1024).strip()
         self.data = loads(self.data) # Pickle utility
-        logger.debug("{} wrote: {}".format(self.data["ClientID"], self.data["ClientMessage"]))
+        logger.debug("The client ID: {} also known as {} wrote: {}".format(self.data["ClientID"], self.data["ClientAlias"], self.data["ClientMessage"]))
         # just sending back the ACK 
         self.request.sendall("k".encode())
 
