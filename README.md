@@ -33,6 +33,11 @@ openssl rsa -passin pass:x1234 -in server.orig.key -out server.key
 openssl req -new -key server.key -out server.csr
 openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 ```
+### Authors:
+In alphabetic order:
+* [Cavuti Christian](https://github.com/Kavuti)
+* [De Paoli Marco](https://github.com/depaolim)
+* [Failla Mattia](https://github.com/MattiaFailla)
 
 ## What we are working on:
 Client side:
