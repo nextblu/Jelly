@@ -14,26 +14,17 @@ In order to install the right versions of the dependencies, there is the Pipfile
 $ pipenv install --three
 ```
 
-### TO DO:
-* Implement a complete data exchange cycle (send/recv)
-* Implement headers
-* Implement an ID system
-* Implement a send_forever directive
-* Implement an intent broker
-* Implement a master-watchdogs
-
-On the server side:
-* Read intent file and define a well-structured api endpoint
-
-### TESTS:
+## Running the tests:
+Jelly's tests are made with unittest. To run a test you can use
 
 ```
 $ python -m unittest test.tests
 ```
+replacing test.tests with the test module you want to run
 
-### TEST CERTIFICATES:
+### Test certficates:
 
-To rebuild the demo certificates:
+To rebuild the demo certificates for SSL/TLS encryption use:
 
 ```
 cd test/demo_ssl
@@ -42,3 +33,15 @@ openssl rsa -passin pass:x1234 -in server.orig.key -out server.key
 openssl req -new -key server.key -out server.csr
 openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 ```
+
+## What we are working on:
+Client side:
+* Implement a complete data exchange cycle (send/recv)
+* Implement headers
+* Implement an ID system
+* Implement a send_forever directive
+* Implement an intent broker
+* Implement a master-watchdogs
+
+Server side:
+* Read intent file and define a well-structured api endpoint
