@@ -104,7 +104,7 @@ class VerboseTCPServer(socketserver.TCPServer):
 
 if __name__ == "__main__":
 
-    HOST, MAGIC = "localhost", "JellySERVER"
+    HOST, MAGIC = "0.0.0.0", "JellySERVER"
 
     # Allowing to reuse same address
     socketserver.ThreadingTCPServer.allow_reuse_address = True
