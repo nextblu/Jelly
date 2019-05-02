@@ -57,13 +57,13 @@ def service_announcement(port, magic):
     message = dumps(serverdict)
     #message = str.encode(message)
 
-    logger.info("Broadcast transmission started!")
+    logger.info("Broadcast address transmission started!")
     while True:
         server.sendto(message, ('<broadcast>', 37020))
         sleep(0.2)
 
 
-class TCPHandler(socketserver.BaseRequestHandler):
+class ThreadingTCPServer(socketserver.ThreadingMixIn, socketserver.StreamRequestHandler):
     """
     It is instantiated once per connection to the server, and must
     override the handle() method to implement communication to the
@@ -87,34 +87,39 @@ class TCPHandler(socketserver.BaseRequestHandler):
 
 class VerboseTCPServer(socketserver.TCPServer):
     def __init__(self, address, handler):
-        self.address = address
+        self.address = address[0]
         self.handler = handler
-        socketserver.TCPServer.__init__(self, address, handler)
+        socketserver.ThreadingTCPServer.__init__(self, address, handler)
 
     def server_activate(self):
-        logger.info("Starting server at address {}".format(self.address))
-        socketserver.TCPServer.server_activate(self)
+        logger.info("Starting Threaded server at address: {}".format(self.address))
+        socketserver.ThreadingTCPServer.server_activate(self)
         logger.info("Server started")
 
     def server_close(self):
         logger.info("Shutting down server at address {}".format(self.address))
-        socketserver.TCPServer.server_close(self)
+        socketserver.ThreadingTCPServer.server_close(self)
         logger.info("Server stopped")
 
 
 if __name__ == "__main__":
 
-    HOST, PORT, MAGIC = "localhost", 9999, "JellySERVER"
+    HOST, MAGIC = "localhost", "JellySERVER"
+
+    # Allowing to reuse same address
+    socketserver.ThreadingTCPServer.allow_reuse_address = True
+    # keep the server alive
+    socketserver.ThreadingTCPServer.terminate = False
+    # Create the server, binding to localhost on default port 9999
+    server = VerboseTCPServer((HOST, 0), ThreadingTCPServer)
+    IP, PORT = server.server_address
+    logger.info("This server is running on port: {}".format(PORT))
+
 
     #Starting service_announcement deamon
     service_announcement_thread = threading.Thread(target=service_announcement, args=(PORT, MAGIC))
     service_announcement_thread.daemon = True
     service_announcement_thread.start()
-
-    # Allowing to reuse same address
-    socketserver.TCPServer.allow_reuse_address = True
-    # Create the server, binding to localhost on port 9999
-    server = VerboseTCPServer((HOST, PORT), TCPHandler)
 
     # Activate the server; this will keep running until you
     # interrupt the program with Ctrl-C
