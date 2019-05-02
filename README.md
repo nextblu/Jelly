@@ -27,11 +27,11 @@ replacing test.tests with the test module you want to run
 To rebuild the demo certificates for SSL/TLS encryption use:
 
 ```
-cd test/demo_ssl
-openssl genrsa -des3 -passout pass:x1234 -out server.orig.key 2048
-openssl rsa -passin pass:x1234 -in server.orig.key -out server.key
-openssl req -new -key server.key -out server.csr
-openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+$ cd test/demo_ssl
+$ openssl genrsa -des3 -passout pass:x1234 -out server.orig.key 2048
+$ openssl rsa -passin pass:x1234 -in server.orig.key -out server.key
+$ openssl req -new -key server.key -out server.csr
+$ openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 ```
 ### Authors:
 In alphabetic order:
