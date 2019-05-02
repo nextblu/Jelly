@@ -88,9 +88,10 @@ if __name__ == "__main__":
 
     message = "dummy data"
     # Creating the dict
-    data = {
+    datagram = {
       "ClientID": "44ad4456a4d65s",     # Yo, we should add client ID here
       "ClientVersion": "0.001",         # :)
+      "ClientAlias": "MyName",
       "ClientMessage": message
     }
 
