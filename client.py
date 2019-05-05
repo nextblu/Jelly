@@ -78,7 +78,7 @@ class SlaveHandler(object):
 if __name__ == "__main__":
     PORT = master_discovery()
 
-    HOST, MAGIC, UUID = "localhost", "JellySERVER", str(uuid4())
+    HOST, UUID = "0.0.0.0", str(uuid4())
     CERFILE = 'test/demo_ssl/server.crt'
     # create an ipv4 (AF_INET) socket object using the tcp protocol (SOCK_STREAM)
     client = socket(AF_INET, SOCK_STREAM)

@@ -117,7 +117,7 @@ class ThreadingTCPHandler(socketserver.ThreadingMixIn, socketserver.StreamReques
 
 if __name__ == "__main__":
 
-    HOST, MAGIC = "localhost", "JellySERVER"
+    HOST, MAGIC = "0.0.0.0", "JellySERVER"
     CERFILE = 'test/demo_ssl/server.crt'
     KEYFILE = 'test/demo_ssl/server.key'
 
