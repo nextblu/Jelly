@@ -11,27 +11,27 @@ logger = configured_logger.logger
 
 def master_discovery():
     # BUG -> OSERROR 98
-    # WORKAROUND: I try again until the port is free
+    # WORKAROUND: I try again until the port is free 
     try:
-        client_socket = socket(AF_INET, SOCK_DGRAM)  # UDP
-        client_socket.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
-        client_socket.bind(("", 37020))
+        client = socket(AF_INET, SOCK_DGRAM) # UDP
+        client.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
+        client.bind(("", 37020))
         while True:
-            data, addr = client_socket.recvfrom(1024)
+            data, addr = client.recvfrom(1024)
             if data:
-                # data = data.decode()
+                #data = data.decode()
                 data = loads(data)
                 # extracting server name
-                server_name = data["ServerName"]
-                server_version = data["ServerVersion"]
-                server_port = data["ServerPort"]
-                logger.info("Got service announcement from '{0}' version '{1}' on port '{2}'".format(server_name, server_version, server_port))
-                # extracting the server's port number
-                return server_port
+                ServerName = data["ServerName"]
+                ServerVersion = data["ServerVersion"]
+                ServerPort = data["ServerPort"]
+                logger.info("Got service announcement from '{0}' version '{1}' on port '{2}'".format(ServerName, ServerVersion, ServerPort))
+                #extracting the server's port number
+                return ServerPort
     except Exception as e:
         logger.error("Got an error while searching for the server: '{0}'. I will try again.".format(e))
         master_discovery()
-
+    
 
 class SecureTCPClient:
     def __init__(self, server_address, cafile):
@@ -78,12 +78,14 @@ class SlaveHandler(object):
 if __name__ == "__main__":
     PORT = master_discovery()
 
-    HOST, MAGIC, UUID = "localhost", "JellySERVER", str(uuid4())
-    CERFILE = 'test/demo_ssl/server.crt'
+    HOST, MAGIC, UUID = "localhost", "JellySERVER", uuid4()
+
     # create an ipv4 (AF_INET) socket object using the tcp protocol (SOCK_STREAM)
     client = socket(AF_INET, SOCK_STREAM)
 
-    client = SecureTCPClient((HOST, PORT), CERFILE)
+    # connect the client
+    client.connect((HOST, PORT))
+
 
     message = "dummy data"
     # Creating the dict
@@ -93,5 +95,9 @@ if __name__ == "__main__":
       "ClientAlias": "MyName",
       "ClientMessage": message
     }
-    server_response = client.exchange(dumps(datagram))
-    logger.debug(server_response)
+
+    client.send(dumps(datagram))
+
+    # receive the response data (4096 is recommended buffer size for incoming commands)
+    response = client.recv(4096)
+    logger.debug(response)
