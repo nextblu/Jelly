@@ -38,18 +38,6 @@ class SecureTCPClient:
         self.client_close()
 
 
-class SlaveHandler(object):
-    """docstring for SlaveHandler."""
-    def __init__(self, arg, port, magic):
-        super(SlaveHandler, self).__init__()
-        self.arg = arg
-        self.port = port
-        self.magic = magic
-        # The following line is commented due to an unresolved reference error. What is that method meant to do?
-        # master_discovery()
-
-
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
