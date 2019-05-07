@@ -1,3 +1,4 @@
+import argparse
 import socketserver
 import ssl
 import uuid
@@ -66,27 +67,6 @@ class SecureTCPServer(socketserver.TCPServer):
         logger.debug("Returning request data for address "+str(client_address))
         return self.__client_data[client_address]
 
-def service_announcement(port, magic):
-    server = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)
-    server.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
-    # Set a timeout so the socket does not block
-    # indefinitely when trying to receive data.
-    server.settimeout(0.2)
-    server.bind(("", 44444))
-
-    server_dict = {
-      "ServerName": "JellySERVER",
-      "ServerVersion": "0.001",
-      "ServerPort": port
-    }
-    message = dumps(server_dict)
-    # message = str.encode(message)
-
-    logger.info("Broadcast address transmission started!")
-    while True:
-        server.sendto(message, ('<broadcast>', 37020))
-        sleep(0.2)
-
 
 class ThreadingTCPHandler(socketserver.ThreadingMixIn, socketserver.StreamRequestHandler):
     """
@@ -117,6 +97,20 @@ class ThreadingTCPHandler(socketserver.ThreadingMixIn, socketserver.StreamReques
 
 if __name__ == "__main__":
 
+    parser = argparse.ArgumentParser(
+        prog='Jserver.py',
+        description=('''\
+            Hey!
+            With Jelly you can simply create a socket messaging system in Python.
+            You can use this program to host a server which will handle all the clients.'''),
+        epilog='''Please note: Jelly is currently in Alpha version.''')
+    parser.add_argument('--port', help='select an optional port')
+    args = parser.parse_args()
+    PORT = 5233 # jcdf  =   5233 (jelly-cavuti-De Paoli-Failla)
+    if args.port:
+        PORT = int(args.port)
+    
+
     HOST, MAGIC = "0.0.0.0", "JellySERVER"
     CERFILE = 'test/demo_ssl/server.crt'
     KEYFILE = 'test/demo_ssl/server.key'
@@ -126,15 +120,8 @@ if __name__ == "__main__":
     # keep the server alive
     socketserver.ThreadingTCPServer.terminate = False
     # Create the server, binding to localhost on default port 9999
-    server = SecureTCPServer(CERFILE, KEYFILE, (HOST, 0), ThreadingTCPHandler)
-    IP, PORT = server.server_address
+    server = SecureTCPServer(CERFILE, KEYFILE, (HOST, PORT), ThreadingTCPHandler)
     logger.info("This server is running on port: {}".format(PORT))
-
-
-    #Starting service_announcement deamon
-    service_announcement_thread = threading.Thread(target=service_announcement, args=(PORT, MAGIC))
-    service_announcement_thread.daemon = True
-    service_announcement_thread.start()
 
     # Activate the server; this will keep running until you
     # interrupt the program with Ctrl-C
