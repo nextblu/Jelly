@@ -29,10 +29,13 @@ class SecureTCPServer(socketserver.TCPServer):
         request_data = loads(request_data)
         self.__client_data[client_address] = request_data
         if self.__CLIENT_ID_KEY in request_data and request_data[self.__CLIENT_ID_KEY] is not None:
-            logger.debug("client_data: {}".format(request_data[self.__CLIENT_ID_KEY]))
+            #logger.debug("client_data: {}".format(request_data[self.__CLIENT_ID_KEY]))
             try:
                 # logger.debug((client_data[self.__CLIENT_ID_KEY]))
                 val = uuid.UUID(hex=request_data[self.__CLIENT_ID_KEY], version=4)
+                #logger.debug((val))
+                #logger.debug(client_address[0])
+                #self.add_client(client_address[0],val)
                 return True
             except ValueError as e:
                 logger.warn("Received request from {} without a valid ClientId".format(client_address), e)
