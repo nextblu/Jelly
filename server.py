@@ -89,7 +89,7 @@ class ThreadingTCPHandler(socketserver.ThreadingMixIn, socketserver.StreamReques
         # self.data = loads(self.data)  # Pickle utility
         logger.debug("The client ID: {} also known as {} wrote: {}".format(self.data["ClientID"],
             self.data["ClientAlias"], self.data["ClientMessage"]))
-        # just sending back the ACK
+        # Sending back the ACK
         self.request.sendall("k".encode())
 
     def intent_broker(self, query):
