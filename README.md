@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/logo-shadow.png" alt="Logo" width="150" height="150" />
+</p>
+<h1 align="center">@appnest/readme</h1>
+
 # Jelly
 A smart auto-tuned messaging system in python.
 
