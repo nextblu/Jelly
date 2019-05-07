@@ -1,4 +1,5 @@
 from socket import socket, AF_INET, SOCK_DGRAM, SOCK_STREAM, SO_BROADCAST, SOL_SOCKET
+import argparse
 import ssl
 from time import sleep
 from pickle import loads, dumps
@@ -7,31 +8,6 @@ from config import configured_logger
 from uuid import uuid4
 
 logger = configured_logger.logger
-
-
-def master_discovery():
-    # BUG -> OSERROR 98
-    # WORKAROUND: I try again until the port is free
-    try:
-        client_socket = socket(AF_INET, SOCK_DGRAM)  # UDP
-        client_socket.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
-        client_socket.bind(("", 37020))
-        while True:
-            data, addr = client_socket.recvfrom(1024)
-            if data:
-                # data = data.decode()
-                data = loads(data)
-                # extracting server name
-                server_name = data["ServerName"]
-                server_version = data["ServerVersion"]
-                server_port = data["ServerPort"]
-                logger.info("Got service announcement from '{0}' version '{1}' on port '{2}'".format(server_name, server_version, server_port))
-                # extracting the server's port number
-                return server_port
-    except Exception as e:
-        logger.error("Got an error while searching for the server: '{0}'. I will try again.".format(e))
-        master_discovery()
-
 
 class SecureTCPClient:
     def __init__(self, server_address, cafile):
@@ -76,20 +52,31 @@ class SlaveHandler(object):
 
 
 if __name__ == "__main__":
-    PORT = master_discovery()
+    parser = argparse.ArgumentParser(
+        prog='Jclient.py',
+        description=('''\
+            Hey!
+            With Jelly you can simply create a socket messaging system in Python.
+            You can use this program to run a client that will send data to the server.'''),
+        epilog='''Please note: Jelly is currently in Alpha version.''')
+    parser.add_argument('--port', help='[OPTIONAL] Select the server port number')
+    args = parser.parse_args()
+    PORT = 5233 # jcdf  =   5233 (jelly-cavuti-De Paoli-Failla)
+    if args.port:
+        PORT = int(args.port)
 
     HOST, UUID = "0.0.0.0", str(uuid4())
     CERFILE = 'test/demo_ssl/server.crt'
-    # create an ipv4 (AF_INET) socket object using the tcp protocol (SOCK_STREAM)
+    # Create an ipv4 (AF_INET) socket object using the tcp protocol (SOCK_STREAM)
     client = socket(AF_INET, SOCK_STREAM)
 
     client = SecureTCPClient((HOST, PORT), CERFILE)
 
     message = "dummy data"
-    # Creating the dict
+    # Creating the datagram
     datagram = {
-      "ClientID": UUID,     # Yo, we should add client ID here
-      "ClientVersion": "0.001",         # :)
+      "ClientID": UUID,
+      "ClientVersion": "0.001",
       "ClientAlias": "MyName",
       "ClientMessage": message
     }
