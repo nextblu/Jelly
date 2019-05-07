@@ -1,5 +1,5 @@
-from socket import socket, AF_INET, SOCK_DGRAM, SOCK_STREAM, SO_BROADCAST, SOL_SOCKET
 import argparse
+from socket import socket, AF_INET, SOCK_DGRAM, SOCK_STREAM, SO_BROADCAST, SOL_SOCKET
 import ssl
 from time import sleep
 from pickle import loads, dumps
@@ -11,23 +11,23 @@ logger = configured_logger.logger
 
 class SecureTCPClient:
     def __init__(self, server_address, cafile):
-        # create an ipv4 (AF_INET) socket object using the tcp protocol (SOCK_STREAM)
+        # Create an ipv4 (AF_INET) socket object using the tcp protocol (SOCK_STREAM)
         self._client = socket(AF_INET, SOCK_STREAM)
         context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile=cafile)
         context.check_hostname = False
         self._client = context.wrap_socket(self._client)
 
-        # connect the client
+        # Connect the client
         self._client.connect(server_address)
 
     def client_close(self):
         self._client.close()
 
     def exchange(self, data):
-        # send some data
+        # Send some data
         self._client.send(data)
 
-        # receive the response data (4096 is recommended buffer size for incoming commands)
+        # Receive the response data (4096 is recommended buffer size for incoming commands)
         response = self._client.recv(4096)
         return response
 
@@ -68,5 +68,6 @@ if __name__ == "__main__":
       "ClientAlias": "MyName",
       "ClientMessage": message
     }
+
     server_response = client.exchange(dumps(datagram))
     logger.debug(server_response)
