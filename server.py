@@ -42,13 +42,14 @@ class SecureTCPServer(socketserver.TCPServer):
             return False
 
     def server_activate(self):
-        logger.info("Starting server at address {}".format(self.server_address))
+        self.ip,self.port = self.server_address
+        logger.info("Starting server at address {} on port {}".format(self.ip, self.port))
         super().server_activate()
         # secure context
         context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
         context.load_cert_chain(self.cerfile, self.keyfile)
         self.socket = context.wrap_socket(self.socket, server_side=True)
-        logger.info("Server started")
+        logger.info("Server started. Waiting for clients.")
 
     def handle_error(self, request, client_address):
         logger.error('-'*40)
@@ -105,11 +106,15 @@ if __name__ == "__main__":
             With Jelly you can simply create a socket messaging system in Python.
             You can use this program to host a server which will handle all the clients.'''),
         epilog='''Please note: Jelly is currently in Alpha version.''')
-    parser.add_argument('--port', help='select an optional port')
+    parser.add_argument('--port', nargs='?', const=5233, type=int, required=False, metavar="[1025-49150]", help='Select the port (1025-49150) address. Default is 5233.', default=5233)
     args = parser.parse_args()
-    PORT = 5233 # jcdf  =   5233 (jelly-cavuti-De Paoli-Failla)
+    #PORT = 5233 # jcdf  =   5233 (jelly-cavuti-De Paoli-Failla)
     if args.port:
         PORT = int(args.port)
+        if PORT<1025 or PORT>49150:
+            logger.error("You can't bind this port: {}. Now binding the default port".format(PORT))
+            PORT = 5233
+            
     
 
     HOST, MAGIC = "0.0.0.0", "JellySERVER"
@@ -122,7 +127,6 @@ if __name__ == "__main__":
     socketserver.ThreadingTCPServer.terminate = False
     # Create the server, binding to localhost on default port 9999
     server = SecureTCPServer(CERFILE, KEYFILE, (HOST, PORT), ThreadingTCPHandler)
-    logger.info("This server is running on port: {}".format(PORT))
 
     # Activate the server; this will keep running until you
     # interrupt the program with Ctrl-C
