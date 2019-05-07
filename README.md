@@ -50,3 +50,11 @@ Client side:
 
 Server side:
 * Read intent file and define a well-structured api endpoint
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License ![alt text](https://img.shields.io/npm/l/express.svg)
+[MIT](https://choosealicense.com/licenses/mit/)
