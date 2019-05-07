@@ -7,6 +7,8 @@ import threading
 from config import configured_logger
 from uuid import uuid4
 
+import string
+
 logger = configured_logger.logger
 
 class SecureTCPClient:
@@ -16,6 +18,7 @@ class SecureTCPClient:
         context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile=cafile)
         context.check_hostname = False
         self._client = context.wrap_socket(self._client)
+        logger.info("Secure connection started.")
 
         # Connect the client
         self._client.connect(server_address)
@@ -56,18 +59,22 @@ if __name__ == "__main__":
     HOST, UUID = "0.0.0.0", str(uuid4())
     CERFILE = 'test/demo_ssl/server.crt'
     # Create an ipv4 (AF_INET) socket object using the tcp protocol (SOCK_STREAM)
-    client = socket(AF_INET, SOCK_STREAM)
+    
+    # JUST FOR TEMPORARY TEST
+    while True:
+        client = socket(AF_INET, SOCK_STREAM)
 
-    client = SecureTCPClient((HOST, PORT), CERFILE)
+        client = SecureTCPClient((HOST, PORT), CERFILE)
 
-    message = "dummy data"
-    # Creating the datagram
-    datagram = {
-      "ClientID": UUID,
-      "ClientVersion": "0.001",
-      "ClientAlias": "MyName",
-      "ClientMessage": message
-    }
+        message = string.ascii_uppercase + string.digits
+        # Creating the datagram
+        datagram = {
+          "ClientID": UUID,
+          "ClientVersion": "0.001",
+          "ClientAlias": "MyName",
+          "ClientMessage": message
+        }
 
-    server_response = client.exchange(dumps(datagram))
-    logger.debug(server_response)
+        server_response = client.exchange(dumps(datagram))
+        logger.debug(server_response)
+        sleep(0.2)
