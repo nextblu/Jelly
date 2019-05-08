@@ -1,0 +1,455 @@
+2019-05-05 19:28:30,852 - server.py - INFO - Starting server at address ('127.0.0.1', 47167)
+2019-05-05 19:28:30,875 - server.py - INFO - Server started
+2019-05-05 19:28:30,875 - server.py - INFO - This server is running on port: 47167
+2019-05-05 19:28:30,892 - server.py - INFO - Broadcast address transmission started!
+2019-05-05 19:28:39,507 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '47167'
+2019-05-05 19:29:31,301 - client.py - DEBUG - b''
+2019-05-05 19:30:17,216 - server.py - INFO - Starting server at address ('127.0.0.1', 55687)
+2019-05-05 19:30:17,218 - server.py - INFO - Server started
+2019-05-05 19:30:17,218 - server.py - INFO - This server is running on port: 55687
+2019-05-05 19:30:17,219 - server.py - INFO - Broadcast address transmission started!
+2019-05-05 19:30:27,637 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '55687'
+2019-05-05 19:30:27,648 - server.py - DEBUG - client_data: 2d776530-354d-4b4e-af83-e44606e58f6b
+2019-05-05 19:32:26,869 - server.py - ERROR - ----------------------------------------
+2019-05-05 19:32:26,869 - server.py - ERROR - Exception happened during processing of request from ('127.0.0.1', 41278)
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.6/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.6/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "server.py", line 99, in __init__
+    socketserver.StreamRequestHandler.__init__(self, request, client_address, server)
+  File "/usr/lib/python3.6/socketserver.py", line 721, in __init__
+    self.handle()
+  File "server.py", line 105, in handle
+    self.data = loads(self.data)  # Pickle utility
+EOFError: Ran out of input
+2019-05-05 19:32:26,871 - server.py - ERROR - ----------------------------------------
+2019-05-05 19:32:28,231 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '55687'
+2019-05-05 19:32:28,251 - server.py - DEBUG - client_data: 4ab36d4d-2f0d-41d6-a90d-ffc102a5e6fa
+2019-05-05 19:32:43,270 - server.py - ERROR - ----------------------------------------
+2019-05-05 19:32:43,270 - server.py - ERROR - Exception happened during processing of request from ('127.0.0.1', 41284)
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.6/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.6/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "server.py", line 99, in __init__
+    socketserver.StreamRequestHandler.__init__(self, request, client_address, server)
+  File "/usr/lib/python3.6/socketserver.py", line 721, in __init__
+    self.handle()
+  File "server.py", line 105, in handle
+    self.data = loads(self.data)  # Pickle utility
+EOFError: Ran out of input
+2019-05-05 19:32:43,271 - server.py - ERROR - ----------------------------------------
+2019-05-05 19:32:44,658 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '55687'
+2019-05-05 19:32:44,668 - server.py - DEBUG - client_data: bbe33adf-99e6-4079-8d09-69d00f1c0e19
+2019-05-05 19:35:27,516 - server.py - ERROR - ----------------------------------------
+2019-05-05 19:35:27,517 - server.py - ERROR - Exception happened during processing of request from ('127.0.0.1', 41290)
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.6/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.6/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "server.py", line 99, in __init__
+    socketserver.StreamRequestHandler.__init__(self, request, client_address, server)
+  File "/usr/lib/python3.6/socketserver.py", line 721, in __init__
+    self.handle()
+  File "server.py", line 105, in handle
+    self.data = loads(self.data)  # Pickle utility
+EOFError: Ran out of input
+2019-05-05 19:35:27,517 - server.py - ERROR - ----------------------------------------
+2019-05-05 19:35:28,909 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '55687'
+2019-05-05 19:35:28,920 - server.py - DEBUG - client_data: a5f68240-88cc-4828-b1e3-98bb49d930bc
+2019-05-05 19:36:20,645 - client.py - DEBUG - b''
+2019-05-05 19:49:24,836 - server.py - INFO - Starting server at address ('127.0.0.1', 42829)
+2019-05-05 19:49:24,837 - server.py - INFO - Server started
+2019-05-05 19:49:24,837 - server.py - INFO - This server is running on port: 42829
+2019-05-05 19:49:24,839 - server.py - INFO - Broadcast address transmission started!
+2019-05-05 19:49:29,847 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '42829'
+2019-05-05 19:49:29,862 - server.py - DEBUG - client_data: c0827915-8a20-4371-a59e-fcffc72f5d75
+2019-05-05 19:50:20,814 - client.py - DEBUG - b''
+2019-05-05 19:50:29,851 - server.py - INFO - Starting server at address ('127.0.0.1', 36473)
+2019-05-05 19:50:29,854 - server.py - INFO - Server started
+2019-05-05 19:50:29,854 - server.py - INFO - This server is running on port: 36473
+2019-05-05 19:50:29,857 - server.py - INFO - Broadcast address transmission started!
+2019-05-05 19:50:40,681 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '36473'
+2019-05-05 19:51:21,514 - server.py - DEBUG - client_data: 8a22f402-52c8-4064-854f-9096d1cbc5f6
+2019-05-05 19:52:47,011 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '36473'
+2019-05-05 19:53:09,065 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '36473'
+2019-05-05 19:53:49,814 - server.py - INFO - Starting server at address ('127.0.0.1', 53265)
+2019-05-05 19:53:49,818 - server.py - INFO - Server started
+2019-05-05 19:53:49,818 - server.py - INFO - This server is running on port: 53265
+2019-05-05 19:53:49,822 - server.py - INFO - Broadcast address transmission started!
+2019-05-05 19:55:30,587 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '53265'
+2019-05-05 19:55:30,601 - server.py - DEBUG - client_data: 47664a97-7a29-4a3d-a865-1d18cce42b05
+2019-05-05 19:56:05,043 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '53265'
+2019-05-05 19:56:12,875 - server.py - ERROR - ----------------------------------------
+2019-05-05 19:56:12,876 - server.py - ERROR - Exception happened during processing of request from ('127.0.0.1', 53300)
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.6/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.6/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/home/christian/PycharmProjects/Jelly/server.py", line 99, in __init__
+    socketserver.StreamRequestHandler.__init__(self, request, client_address, server)
+  File "/usr/lib/python3.6/socketserver.py", line 721, in __init__
+    self.handle()
+  File "/home/christian/PycharmProjects/Jelly/server.py", line 105, in handle
+    self.data = loads(self.data)  # Pickle utility
+EOFError: Ran out of input
+2019-05-05 19:56:12,897 - server.py - ERROR - ----------------------------------------
+2019-05-05 19:56:14,553 - server.py - DEBUG - client_data: cca2d5d1-b076-4b17-8d1e-008901f6d86d
+2019-05-05 19:56:31,821 - server.py - ERROR - ----------------------------------------
+2019-05-05 19:56:31,822 - server.py - ERROR - Exception happened during processing of request from ('127.0.0.1', 53306)
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.6/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.6/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/home/christian/PycharmProjects/Jelly/server.py", line 99, in __init__
+    socketserver.StreamRequestHandler.__init__(self, request, client_address, server)
+  File "/usr/lib/python3.6/socketserver.py", line 721, in __init__
+    self.handle()
+  File "/home/christian/PycharmProjects/Jelly/server.py", line 105, in handle
+    self.data = loads(self.data)  # Pickle utility
+EOFError: Ran out of input
+2019-05-05 19:56:31,823 - server.py - ERROR - ----------------------------------------
+2019-05-05 19:56:33,102 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '53265'
+2019-05-05 19:56:33,113 - server.py - DEBUG - client_data: cea3f7aa-d6fe-4583-80ce-1ab6152b6b9f
+2019-05-05 19:58:12,268 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '53265'
+2019-05-05 19:58:25,492 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '53265'
+2019-05-05 19:58:29,942 - server.py - ERROR - ----------------------------------------
+2019-05-05 19:58:29,944 - server.py - ERROR - Exception happened during processing of request from ('127.0.0.1', 53312)
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.6/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.6/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/home/christian/PycharmProjects/Jelly/server.py", line 99, in __init__
+    socketserver.StreamRequestHandler.__init__(self, request, client_address, server)
+  File "/usr/lib/python3.6/socketserver.py", line 721, in __init__
+    self.handle()
+  File "/home/christian/PycharmProjects/Jelly/server.py", line 105, in handle
+    self.data = loads(self.data)  # Pickle utility
+EOFError: Ran out of input
+2019-05-05 19:58:29,945 - server.py - ERROR - ----------------------------------------
+2019-05-05 19:58:29,961 - server.py - DEBUG - client_data: 3c2d6bc9-f650-4a95-9591-b169ba17c961
+2019-05-05 21:34:15,510 - client.py - DEBUG - b''
+2019-05-05 21:34:24,884 - server.py - INFO - Starting server at address ('127.0.0.1', 60173)
+2019-05-05 21:34:24,903 - server.py - INFO - Server started
+2019-05-05 21:34:24,903 - server.py - INFO - This server is running on port: 60173
+2019-05-05 21:34:24,906 - server.py - INFO - Broadcast address transmission started!
+2019-05-05 21:37:03,564 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '60173'
+2019-05-05 21:41:06,187 - client.py - DEBUG - b''
+2019-05-05 21:42:28,271 - server.py - INFO - Starting server at address ('127.0.0.1', 51493)
+2019-05-05 21:42:28,274 - server.py - INFO - Server started
+2019-05-05 21:42:28,274 - server.py - INFO - This server is running on port: 51493
+2019-05-05 21:42:28,278 - server.py - INFO - Broadcast address transmission started!
+2019-05-05 21:42:31,685 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '51493'
+2019-05-05 21:50:58,044 - server.py - INFO - Starting server at address ('127.0.0.1', 36329)
+2019-05-05 21:50:58,046 - server.py - INFO - Server started
+2019-05-05 21:50:58,047 - server.py - INFO - This server is running on port: 36329
+2019-05-05 21:50:58,050 - server.py - INFO - Broadcast address transmission started!
+2019-05-05 21:51:01,257 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '36329'
+2019-05-05 21:52:44,064 - server.py - INFO - Starting server at address ('127.0.0.1', 37791)
+2019-05-05 21:52:44,066 - server.py - INFO - Server started
+2019-05-05 21:52:44,066 - server.py - INFO - This server is running on port: 37791
+2019-05-05 21:52:44,070 - server.py - INFO - Broadcast address transmission started!
+2019-05-05 21:52:50,282 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '37791'
+2019-05-05 21:54:14,338 - client.py - DEBUG - b''
+2019-05-05 21:54:15,402 - server.py - INFO - Starting server at address ('127.0.0.1', 36953)
+2019-05-05 21:54:15,406 - server.py - INFO - Server started
+2019-05-05 21:54:15,406 - server.py - INFO - This server is running on port: 36953
+2019-05-05 21:54:15,410 - server.py - INFO - Broadcast address transmission started!
+2019-05-05 21:54:17,615 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '36953'
+2019-05-05 21:57:16,413 - client.py - DEBUG - b''
+2019-05-05 21:57:17,562 - server.py - INFO - Starting server at address ('127.0.0.1', 49253)
+2019-05-05 21:57:17,571 - server.py - INFO - Server started
+2019-05-05 21:57:17,571 - server.py - INFO - This server is running on port: 49253
+2019-05-05 21:57:17,591 - server.py - INFO - Broadcast address transmission started!
+2019-05-05 21:57:20,799 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '49253'
+2019-05-05 21:57:20,813 - server.py - DEBUG - client_data: 4077b3a5-06d8-41e7-bfe8-df220965999d
+2019-05-05 21:57:20,814 - server.py - ERROR - ----------------------------------------
+2019-05-05 21:57:20,814 - server.py - ERROR - Exception happened during processing of request from ('127.0.0.1', 37150)
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.6/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.6/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/home/christian/PycharmProjects/Jelly/server.py", line 106, in __init__
+    socketserver.StreamRequestHandler.__init__(self, request, client_address, server)
+  File "/usr/lib/python3.6/socketserver.py", line 721, in __init__
+    self.handle()
+  File "/home/christian/PycharmProjects/Jelly/server.py", line 111, in handle
+    self.data = self.server.get_request_data(self.client_address)
+  File "/home/christian/PycharmProjects/Jelly/server.py", line 71, in get_request_data
+    logger.trace("Returning request data for address "+client_address)
+AttributeError: 'Logger' object has no attribute 'trace'
+2019-05-05 21:57:20,830 - server.py - ERROR - ----------------------------------------
+2019-05-05 21:57:20,831 - client.py - DEBUG - b''
+2019-05-05 21:58:33,202 - server.py - INFO - Starting server at address ('127.0.0.1', 57933)
+2019-05-05 21:58:33,205 - server.py - INFO - Server started
+2019-05-05 21:58:33,206 - server.py - INFO - This server is running on port: 57933
+2019-05-05 21:58:33,210 - server.py - INFO - Broadcast address transmission started!
+2019-05-05 21:58:38,422 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '57933'
+2019-05-05 21:58:38,433 - server.py - DEBUG - client_data: e8ae1ad5-dcce-409d-b28e-38b99cde8e9e
+2019-05-05 21:58:38,435 - server.py - ERROR - ----------------------------------------
+2019-05-05 21:58:38,436 - server.py - ERROR - Exception happened during processing of request from ('127.0.0.1', 51514)
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.6/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.6/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/home/christian/PycharmProjects/Jelly/server.py", line 106, in __init__
+    socketserver.StreamRequestHandler.__init__(self, request, client_address, server)
+  File "/usr/lib/python3.6/socketserver.py", line 721, in __init__
+    self.handle()
+  File "/home/christian/PycharmProjects/Jelly/server.py", line 111, in handle
+    self.data = self.server.get_request_data(self.client_address)
+  File "/home/christian/PycharmProjects/Jelly/server.py", line 71, in get_request_data
+    logger.debug("Returning request data for address "+client_address)
+TypeError: must be str, not tuple
+2019-05-05 21:58:38,439 - server.py - ERROR - ----------------------------------------
+2019-05-05 21:58:38,439 - client.py - DEBUG - b''
+2019-05-05 21:59:15,521 - server.py - INFO - Starting server at address ('127.0.0.1', 34055)
+2019-05-05 21:59:15,524 - server.py - INFO - Server started
+2019-05-05 21:59:15,524 - server.py - INFO - This server is running on port: 34055
+2019-05-05 21:59:15,528 - server.py - INFO - Broadcast address transmission started!
+2019-05-05 21:59:19,737 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '34055'
+2019-05-05 21:59:19,752 - server.py - DEBUG - client_data: e8712a42-4b6a-417c-ba2b-ad41cf01a356
+2019-05-05 21:59:19,753 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 36442)
+2019-05-05 21:59:19,753 - server.py - DEBUG - The client ID: e8712a42-4b6a-417c-ba2b-ad41cf01a356 also known as MyName wrote: dummy data
+2019-05-05 21:59:19,754 - client.py - DEBUG - b'k'
+2019-05-05 22:10:27,803 - server.py - INFO - Starting server at address ('127.0.0.1', 43293)
+2019-05-05 22:10:27,805 - server.py - INFO - Server started
+2019-05-05 22:10:27,806 - server.py - INFO - This server is running on port: 43293
+2019-05-05 22:10:27,810 - server.py - INFO - Broadcast address transmission started!
+2019-05-05 22:10:33,223 - client.py - INFO - Got service announcement from 'JellySERVER' version '0.001' on port '43293'
+2019-05-05 22:10:33,237 - server.py - DEBUG - client_data: f6f1a85e-fbc4-4745-84a7-90a58c2ea7d6
+2019-05-05 22:10:33,237 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 53032)
+2019-05-05 22:10:33,238 - server.py - DEBUG - The client ID: f6f1a85e-fbc4-4745-84a7-90a58c2ea7d6 also known as MyName wrote: dummy data
+2019-05-05 22:10:33,238 - client.py - DEBUG - b'k'
+2019-05-08 22:25:20,897 - logging-test.py - DEBUG - TEST DEBUG
+2019-05-08 22:25:20,899 - logging-test.py - INFO - TEST INFO
+2019-05-08 22:27:14,636 - logging-test.py - DEBUG - TEST DEBUG
+2019-05-08 22:27:14,636 - logging-test.py - INFO - TEST INFO
+2019-05-08 23:14:44,865 - logging-test.py - DEBUG - TEST DEBUG
+2019-05-08 23:14:44,868 - logging-test.py - INFO - TEST INFO
+2019-05-08 23:22:21,385 - configured_logger.py - DEBUG - []
+2019-05-08 23:22:21,390 - logging-test.py - DEBUG - TEST DEBUG
+2019-05-08 23:22:21,390 - logging-test.py - INFO - TEST INFO
+2019-05-08 23:22:41,365 - configured_logger.py - DEBUG - []
+2019-05-08 23:22:41,371 - logging-test.py - DEBUG - TEST DEBUG
+2019-05-08 23:22:41,371 - logging-test.py - INFO - TEST INFO
+2019-05-08 23:22:41,371 - logging-test.py - DEBUG - []
+2019-05-08 23:36:50,046 - configured_logger.py - DEBUG - {'filters': [], 'name': 'root', 'level': 0, 'parent': <RootLogger root (DEBUG)>, 'propagate': True, 'handlers': [], 'disabled': False, 'manager': <logging.Manager object at 0x7f7c17308e80>}
+2019-05-08 23:36:50,051 - logging-test.py - DEBUG - TEST DEBUG
+2019-05-08 23:36:50,051 - logging-test.py - INFO - TEST INFO
+2019-05-08 23:43:10,770 - configured_logger.py - DEBUG - {'filters': [], 'name': 'root', 'level': 10, 'parent': None, 'propagate': True, 'handlers': [<StreamHandler <stdout> (DEBUG)>, <TimedRotatingFileHandler /home/christian/PycharmProjects/Jelly/logs/log.out (DEBUG)>], 'disabled': False}
+2019-05-08 23:43:10,779 - logging-test.py - DEBUG - TEST DEBUG
+2019-05-08 23:43:10,779 - logging-test.py - INFO - TEST INFO
+2019-05-08 23:43:52,349 - configured_logger.py - DEBUG - %(asctime)s - %(filename)s - %(levelname)s - %(message)s
+2019-05-08 23:43:52,357 - logging-test.py - DEBUG - TEST DEBUG
+2019-05-08 23:43:52,358 - logging-test.py - INFO - TEST INFO
+2019-05-08 23:44:28,203 - logging-test.py - DEBUG - TEST DEBUG
+2019-05-08 23:44:28,204 - logging-test.py - INFO - TEST INFO
+2019-05-08 23:44:58,083 - server.py - INFO - Starting server at address 0.0.0.0 on port 5233
+2019-05-08 23:44:58,106 - server.py - INFO - Server started. Waiting for clients.
+2019-05-08 23:45:19,463 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:19,481 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57654)
+2019-05-08 23:45:19,481 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:19,482 - client.py - DEBUG - b'k'
+2019-05-08 23:45:19,684 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:19,689 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57656)
+2019-05-08 23:45:19,690 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:19,690 - client.py - DEBUG - b'k'
+2019-05-08 23:45:19,892 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:19,897 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57658)
+2019-05-08 23:45:19,898 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:19,898 - client.py - DEBUG - b'k'
+2019-05-08 23:45:20,102 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:20,112 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57660)
+2019-05-08 23:45:20,112 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:20,112 - client.py - DEBUG - b'k'
+2019-05-08 23:45:20,315 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:20,322 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57662)
+2019-05-08 23:45:20,323 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:20,323 - client.py - DEBUG - b'k'
+2019-05-08 23:45:20,526 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:20,536 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57664)
+2019-05-08 23:45:20,536 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:20,537 - client.py - DEBUG - b'k'
+2019-05-08 23:45:20,739 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:20,747 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57666)
+2019-05-08 23:45:20,747 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:20,748 - client.py - DEBUG - b'k'
+2019-05-08 23:45:20,950 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:20,959 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57668)
+2019-05-08 23:45:20,960 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:20,960 - client.py - DEBUG - b'k'
+2019-05-08 23:45:21,162 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:21,170 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57670)
+2019-05-08 23:45:21,171 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:21,171 - client.py - DEBUG - b'k'
+2019-05-08 23:45:21,374 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:21,381 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57672)
+2019-05-08 23:45:21,381 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:21,382 - client.py - DEBUG - b'k'
+2019-05-08 23:45:21,584 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:21,592 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57674)
+2019-05-08 23:45:21,592 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:21,592 - client.py - DEBUG - b'k'
+2019-05-08 23:45:21,795 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:21,804 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57676)
+2019-05-08 23:45:21,804 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:21,805 - client.py - DEBUG - b'k'
+2019-05-08 23:45:22,007 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:22,015 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57678)
+2019-05-08 23:45:22,015 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:22,016 - client.py - DEBUG - b'k'
+2019-05-08 23:45:22,219 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:22,228 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57680)
+2019-05-08 23:45:22,228 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:22,229 - client.py - DEBUG - b'k'
+2019-05-08 23:45:22,431 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:22,439 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57682)
+2019-05-08 23:45:22,439 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:22,440 - client.py - DEBUG - b'k'
+2019-05-08 23:45:22,642 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:22,651 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57684)
+2019-05-08 23:45:22,651 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:22,652 - client.py - DEBUG - b'k'
+2019-05-08 23:45:22,854 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:22,861 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57686)
+2019-05-08 23:45:22,861 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:22,861 - client.py - DEBUG - b'k'
+2019-05-08 23:45:23,064 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:23,070 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57688)
+2019-05-08 23:45:23,070 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:23,071 - client.py - DEBUG - b'k'
+2019-05-08 23:45:23,273 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:23,278 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57690)
+2019-05-08 23:45:23,279 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:23,279 - client.py - DEBUG - b'k'
+2019-05-08 23:45:23,482 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:23,491 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57692)
+2019-05-08 23:45:23,491 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:23,492 - client.py - DEBUG - b'k'
+2019-05-08 23:45:23,695 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:23,701 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57694)
+2019-05-08 23:45:23,701 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:23,702 - client.py - DEBUG - b'k'
+2019-05-08 23:45:23,904 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:23,915 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57696)
+2019-05-08 23:45:23,915 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:23,916 - client.py - DEBUG - b'k'
+2019-05-08 23:45:24,118 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:24,126 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57698)
+2019-05-08 23:45:24,126 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:24,126 - client.py - DEBUG - b'k'
+2019-05-08 23:45:24,329 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:24,339 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57700)
+2019-05-08 23:45:24,339 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:24,340 - client.py - DEBUG - b'k'
+2019-05-08 23:45:24,542 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:24,549 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57702)
+2019-05-08 23:45:24,549 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:24,550 - client.py - DEBUG - b'k'
+2019-05-08 23:45:24,752 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:24,761 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57704)
+2019-05-08 23:45:24,762 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:24,762 - client.py - DEBUG - b'k'
+2019-05-08 23:45:24,965 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:24,975 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57706)
+2019-05-08 23:45:24,976 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:24,976 - client.py - DEBUG - b'k'
+2019-05-08 23:45:25,179 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:25,187 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57708)
+2019-05-08 23:45:25,187 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:25,188 - client.py - DEBUG - b'k'
+2019-05-08 23:45:25,390 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:25,398 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57710)
+2019-05-08 23:45:25,399 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:25,400 - client.py - DEBUG - b'k'
+2019-05-08 23:45:25,602 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:25,609 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57712)
+2019-05-08 23:45:25,610 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:25,610 - client.py - DEBUG - b'k'
+2019-05-08 23:45:25,812 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:25,817 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57714)
+2019-05-08 23:45:25,818 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:25,818 - client.py - DEBUG - b'k'
+2019-05-08 23:45:26,021 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:26,030 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57716)
+2019-05-08 23:45:26,030 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:26,030 - client.py - DEBUG - b'k'
+2019-05-08 23:45:26,233 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:26,244 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57718)
+2019-05-08 23:45:26,244 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:26,245 - client.py - DEBUG - b'k'
+2019-05-08 23:45:26,447 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:26,456 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57720)
+2019-05-08 23:45:26,456 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:26,457 - client.py - DEBUG - b'k'
+2019-05-08 23:45:26,659 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:26,665 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57722)
+2019-05-08 23:45:26,666 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:26,667 - client.py - DEBUG - b'k'
+2019-05-08 23:45:26,869 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:26,876 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57724)
+2019-05-08 23:45:26,877 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:26,877 - client.py - DEBUG - b'k'
+2019-05-08 23:45:27,079 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:27,087 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57726)
+2019-05-08 23:45:27,088 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:27,089 - client.py - DEBUG - b'k'
+2019-05-08 23:45:27,292 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:27,299 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57728)
+2019-05-08 23:45:27,299 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:27,300 - client.py - DEBUG - b'k'
+2019-05-08 23:45:27,502 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:27,510 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57730)
+2019-05-08 23:45:27,510 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:27,511 - client.py - DEBUG - b'k'
+2019-05-08 23:45:27,713 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:27,721 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57732)
+2019-05-08 23:45:27,722 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:27,722 - client.py - DEBUG - b'k'
+2019-05-08 23:45:27,925 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:27,932 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57734)
+2019-05-08 23:45:27,933 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:27,933 - client.py - DEBUG - b'k'
+2019-05-08 23:45:28,140 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:28,146 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57736)
+2019-05-08 23:45:28,147 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:28,147 - client.py - DEBUG - b'k'
+2019-05-08 23:45:28,351 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:28,360 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57738)
+2019-05-08 23:45:28,361 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:28,361 - client.py - DEBUG - b'k'
+2019-05-08 23:45:28,564 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:28,572 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57740)
+2019-05-08 23:45:28,572 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:28,573 - client.py - DEBUG - b'k'
+2019-05-08 23:45:28,775 - client.py - INFO - Secure connection started.
+2019-05-08 23:45:28,784 - server.py - DEBUG - Returning request data for address ('127.0.0.1', 57742)
+2019-05-08 23:45:28,784 - server.py - DEBUG - The client ID: 00c240f1-3ba7-4607-9511-71ce428d41f1 also known as MyName wrote: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+2019-05-08 23:45:28,785 - client.py - DEBUG - b'k'
+2019-05-08 23:45:28,987 - client.py - INFO - Secure connection started.

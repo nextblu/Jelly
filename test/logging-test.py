@@ -1,7 +1,7 @@
 import logging
 import logging.config
+from config import configured_logger
 
-logging.config.fileConfig('../config/logging.ini')
-
-logger = logging.getLogger('root')
+logger = configured_logger.logger
 logger.debug('TEST DEBUG')
+logger.info('TEST INFO')

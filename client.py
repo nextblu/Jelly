@@ -59,7 +59,7 @@ if __name__ == "__main__":
     HOST, UUID = "0.0.0.0", str(uuid4())
     CERFILE = 'test/demo_ssl/server.crt'
     # Create an ipv4 (AF_INET) socket object using the tcp protocol (SOCK_STREAM)
-    
+
     # JUST FOR TEMPORARY TEST
     while True:
         client = socket(AF_INET, SOCK_STREAM)
