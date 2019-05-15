@@ -100,8 +100,8 @@ class ThreadingTCPHandler(socketserver.ThreadingMixIn, socketserver.StreamReques
         logger.debug("The client ID: {} also known as {} wrote: {}".format(self.data["ClientID"],
             self.data["ClientAlias"], self.data["ClientMessage"]))
         # Sending back the ACK
-        ACK = {VAL:'OK'}
-        self.request.sendall(ACK.encode())
+        ACK = {'VAL':'OK'}
+        self.request.sendall(dumps(ACK))
 
     def intent_broker(self, query):
         # TODO: Read intent file and define a well-structured api endpoint
