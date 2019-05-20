@@ -76,5 +76,5 @@ if __name__ == "__main__":
         }
 
         server_response = client.exchange(dumps(datagram))
-        logger.debug(server_response)
+        logger.debug(loads(server_response))
         sleep(0.2)

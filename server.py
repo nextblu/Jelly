@@ -13,6 +13,7 @@ logger = configured_logger.logger
 
 
 class SecureTCPServer(socketserver.TCPServer):
+
     __CLIENT_ID_KEY = "ClientID"
     __client_map = {}
 
@@ -26,23 +27,29 @@ class SecureTCPServer(socketserver.TCPServer):
 
     def verify_request(self, request, client_address):
         request_data = request.recv(4096).strip()
-        request_data = loads(request_data)
-        self.__client_data[client_address] = request_data
-        if self.__CLIENT_ID_KEY in request_data and request_data[self.__CLIENT_ID_KEY] is not None:
-            #logger.debug("client_data: {}".format(request_data[self.__CLIENT_ID_KEY]))
-            try:
-                # logger.debug((client_data[self.__CLIENT_ID_KEY]))
-                val = uuid.UUID(hex=request_data[self.__CLIENT_ID_KEY], version=4)
-                #logger.debug((val))
-                #logger.debug(client_address[0])
-                #self.add_client(client_address[0],val)
-                return True
-            except ValueError as e:
-                logger.warn("Received request from {} without a valid ClientId".format(client_address), e)
+
+        try:
+            request_data = loads(request_data)
+            self.__client_data[client_address] = request_data
+            if self.__CLIENT_ID_KEY in request_data and request_data[self.__CLIENT_ID_KEY] is not None:
+                #logger.debug("client_data: {}".format(request_data[self.__CLIENT_ID_KEY]))
+                try:
+                    # logger.debug((client_data[self.__CLIENT_ID_KEY]))
+                    val = uuid.UUID(hex=request_data[self.__CLIENT_ID_KEY], version=4)
+                    #logger.debug((val))
+                    #logger.debug(client_address[0])
+                    #self.add_client(client_address[0],val)
+                    return True
+                except ValueError as e:
+                    logger.warn("Received request from {} without a valid ClientId".format(client_address), e)
+                    return False
+            else:
+                logger.warn("Received request from {} without a ClientId".format(client_address))
                 return False
-        else:
-            logger.warn("Received request from {} without a ClientId".format(client_address))
+        except Exception as e:
+            logger.error("A client aborted the connection abnormally. Error message: {}".format(e))
             return False
+
 
     def server_activate(self):
         self.ip,self.port = self.server_address
@@ -93,7 +100,8 @@ class ThreadingTCPHandler(socketserver.ThreadingMixIn, socketserver.StreamReques
         logger.debug("The client ID: {} also known as {} wrote: {}".format(self.data["ClientID"],
             self.data["ClientAlias"], self.data["ClientMessage"]))
         # Sending back the ACK
-        self.request.sendall("k".encode())
+        ACK = {'VAL':'OK'}
+        self.request.sendall(dumps(ACK))
 
     def intent_broker(self, query):
         # TODO: Read intent file and define a well-structured api endpoint
