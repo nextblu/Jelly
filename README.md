@@ -32,13 +32,31 @@ $ pipenv install --three
 ```
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/MattiaFailla/Jelly/master/docs/img/colored.png)](#tests)
-## Running the tests:
-Jelly's tests are made with unittest. To run a test you can use
+
+## Minimal working example:
+
+Start Server:
 
 ```
-$ python -m unittest test.tests
+$ python cli.py server --cafile tests/demo_ssl/server.crt --keyfile tests/demo_ssl/server.key tests.mock_commands
 ```
-replacing test.tests with the test module you want to run
+
+Run some client requests:
+
+```
+$ python cli.py client --cafile tests/demo_ssl/server.crt echo ciao
+$ python cli.py client --cafile tests/demo_ssl/server.crt uuid
+$ python cli.py client --cafile tests/demo_ssl/server.crt maximum 6 9 99 987
+
+```
+
+
+## Running the tests:
+Jelly's tests are made with unittest.
+
+```
+$ python -m unittest discover tests
+```
 
 ### Test certficates:
 
@@ -61,7 +79,6 @@ In alphabetic order:
 
 ## What we are working on:
 Client side:
-* Implement a complete data exchange cycle (send/recv)
 * Implement headers
 * Implement an ID system
 * Implement a send_forever directive
