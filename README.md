@@ -79,9 +79,9 @@ In alphabetic order:
 
 ## What we are working on:
 Client side:
-* Implement headers
-* Implement an ID system
-* Implement a send_forever directive
+* Implement headers - Done
+* Implement an ID system - Done
+* Implement a send_forever directive - Done
 * Implement an intent broker
 * Implement a master-watchdogs
 
